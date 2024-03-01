@@ -1,25 +1,2 @@
-require("disabled_built_ins")
-
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
-
--- custom commands
-require("vim-cmds")
-require("keymaps")
-
-
-require("lazy").setup("plugins")
-
-vim.cmd.colorscheme "sonokai"
-
-
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")
